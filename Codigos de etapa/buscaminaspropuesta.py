@@ -8,7 +8,8 @@ ANCHO, ALTO, CANTIDAD_BOMBAS = 6, 6, 6
 COLORES = {
     0: "light green", 
     1: "light green",        
-    2: "light green",}
+    2: "light green",
+    3: "light green"}
 
 root = Tk()
 frame = Frame(root)
