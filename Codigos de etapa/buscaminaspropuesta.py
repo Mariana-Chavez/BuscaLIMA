@@ -7,8 +7,8 @@ import time
 ANCHO, ALTO, CANTIDAD_BOMBAS = 6, 6, 6
 COLORES = {
     0: "light green", 
-    1: "blue",        
-    2: "green",}
+    1: "light green",        
+    2: "light green",}
 
 root = Tk()
 frame = Frame(root)
