@@ -26,11 +26,11 @@ def iniciar_tiempo():
     actualizar_tiempo()
 
 def actualizar_tiempo():
-	global tiempo_activo
-	if tiempo_activo:
-	    tiempo_transcurrido = round(time.time() - tiempo_inicio)
-	    tiempo_label.config(text=f"Tiempo: {tiempo_transcurrido}s")
-	    root.after(1000, actualizar_tiempo)
+    global tiempo_activo
+    if tiempo_activo:
+        tiempo_transcurrido = round(time.time() - tiempo_inicio)
+        tiempo_label.config(text=f"Tiempo: {tiempo_transcurrido}s")
+        root.after(1000, actualizar_tiempo)
 
 def crear_menu():
     menu_bar = Menu(frame)
@@ -105,7 +105,7 @@ def on_left_click(i, j):
         reveal_empty_cells(i, j)
     else:
         botones[i][j].config(text=str(tablero[i][j]), bg=COLORES.get(numero, "light green"))
-	botones[i][j].config(state=tk.DISABLED)
+        botones[i][j].config(state=tk.DISABLED)
 
 #banderaImgSlot = PhotoImage(file="img/banderaSlot.png")
 #imagenTransparente = PhotoImage(file="img/imagenTransparente.png")
@@ -141,9 +141,9 @@ def verificar_victoria():
 imagenBomba = PhotoImage(file="../img/bomba3.png")
 
 def game_over():
-	global tiempo_activo
-	tiempo_activo = False
-	
+    global tiempo_activo
+    tiempo_activo = False
+    
     for i in range(ALTO):
         for j in range(ANCHO):
             if tablero[i][j] == -1:
