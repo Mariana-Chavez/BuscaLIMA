@@ -119,11 +119,18 @@ imagenTransparente = PhotoImage(file="../img/imagenTransparente.png")
 def on_right_click(i, j):
     if botones[i][j]["state"] == tk.NORMAL:
         if not banderas[i][j]:
-            botones[i][j].config(image=banderaImgSlot, width=64, height=65,  bg="#f17070")
-            banderas[i][j] = True
+            bandera_frame = Frame(frame, width=64, height=65, bg="#f17070")
+            bandera_frame.grid(row=i, column=j)
+            
+            bandera_label = Label(bandera_frame, image=banderaImgSlot)
+            bandera_label.pack()
+
+            banderas[i][j] = bandera_frame
         else:
             botones[i][j].config(image=imagenTransparente, text="")
+            banderas[i][j].destroy()
             banderas[i][j] = False
+
 
 def reveal_empty_cells(i, j, visited):
     if (0 <= i < ALTO and 0 <= j < ANCHO and
