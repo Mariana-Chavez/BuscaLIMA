@@ -108,7 +108,7 @@ def on_left_click(i, j):
     elif tablero[i][j] == 0:
         reveal_empty_cells(i, j)
     else:
-        botones[i][j].config(text=str(tablero[i][j]), bg=COLORES.get(numero, "light green"))
+        botones[i][j].config(text=str(tablero[i][j]), bg=COLORES.get(tablero[i][j], "light green"))
         botones[i][j].config(state=tk.DISABLED)
 
 #banderaImgSlot = PhotoImage(file="img/banderaSlot.png")
