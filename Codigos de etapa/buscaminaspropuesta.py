@@ -18,6 +18,7 @@ frame.config(width=400, height=400)
 # Contador de tiempo
 tiempo_inicio = 0
 tiempo_label = None
+tiempo_activo= True
 
 def iniciar_tiempo():
     global tiempo_inicio
@@ -25,9 +26,11 @@ def iniciar_tiempo():
     actualizar_tiempo()
 
 def actualizar_tiempo():
-    tiempo_transcurrido = round(time.time() - tiempo_inicio)
-    tiempo_label.config(text=f"Tiempo: {tiempo_transcurrido}s")
-    root.after(1000, actualizar_tiempo)
+	global tiempo_activo
+	if tiempo_activo:
+	    tiempo_transcurrido = round(time.time() - tiempo_inicio)
+	    tiempo_label.config(text=f"Tiempo: {tiempo_transcurrido}s")
+	    root.after(1000, actualizar_tiempo)
 
 def crear_menu():
     menu_bar = Menu(frame)
@@ -58,7 +61,7 @@ def limpiar_tablero():
         tiempo_label.destroy()
 
 def crear_tablero():
-    global tablero, botones, banderas, tiempo_label
+    global tablero, botones, banderas, tiempo_label, tiempo_activo
     tablero = [[0] * ANCHO for _ in range(ALTO)]
     banderas = [[False] * ANCHO for _ in range(ALTO)]
     place_bombs()
@@ -100,9 +103,9 @@ def on_left_click(i, j):
         game_over()
     elif tablero[i][j] == 0:
         reveal_empty_cells(i, j)
-	botones[i][j].config(bg="light blue")
     else:
-        botones[i][j].config(text=str(tablero[i][j]), bg="light green")
+        botones[i][j].config(text=str(tablero[i][j]), bg=COLORES.get(numero, "light green"))
+		botones[i][j].config(state=tk.DISABLED)
 
 #banderaImgSlot = PhotoImage(file="img/banderaSlot.png")
 #imagenTransparente = PhotoImage(file="img/imagenTransparente.png")
@@ -121,12 +124,12 @@ def on_right_click(i, j):
 def reveal_empty_cells(i, j):
     if 0 <= i < ALTO and 0 <= j < ANCHO and botones[i][j]["state"] == tk.NORMAL:
         if tablero[i][j] == 0:
-            botones[i][j].config(state=tk.DISABLED, text="", bg="light blue")
+            botones[i][j].config(state=tk.DISABLED, text="", bg=COLORES[0])
             for x in range(-1, 2):
                 for y in range(-1, 2):
                     reveal_empty_cells(i + y, j + x)
         elif 0 < tablero[i][j] < 9:
-            botones[i][j].config(state=tk.DISABLED, text=str(tablero[i][j]), bg="light green")
+            botones[i][j].config(state=tk.DISABLED, text=str(tablero[i][j]), bg=COLORES[tablero[i][j]])
 
 def verificar_victoria():
     celdas_sin_bomba = [botones[i][j]["state"] == tk.DISABLED for i in range(ALTO) for j in range(ANCHO)]
@@ -138,6 +141,9 @@ def verificar_victoria():
 imagenBomba = PhotoImage(file="../img/bomba3.png")
 
 def game_over():
+	global tiempo_activo
+	tiempo_activo = False
+	
     for i in range(ALTO):
         for j in range(ANCHO):
             if tablero[i][j] == -1:
