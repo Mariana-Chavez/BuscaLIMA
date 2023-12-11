@@ -9,7 +9,8 @@ COLORES = {
     0: "light green", 
     1: "light green",        
     2: "light green",
-    3: "light green"}
+    3: "light green",
+    4: "light green"}
 
 root = Tk()
 frame = Frame(root)
