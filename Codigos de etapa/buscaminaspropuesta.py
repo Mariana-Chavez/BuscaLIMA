@@ -106,7 +106,7 @@ def on_left_click(i, j):
     if tablero[i][j] == -1:
         game_over()
     elif tablero[i][j] == 0:
-        visited ? set()
+        visited = set()
         reveal_empty_cells(i, j, visited)
     else:
         botones[i][j].config(text=str(tablero[i][j]), bg=COLORES.get(tablero[i][j], "light green"))
