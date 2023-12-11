@@ -5,6 +5,10 @@ import random
 import time
 
 ANCHO, ALTO, CANTIDAD_BOMBAS = 6, 6, 6
+COLORES = {
+    0: "light green", 
+    1: "blue",        
+    2: "green",}
 
 root = Tk()
 frame = Frame(root)
