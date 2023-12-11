@@ -16,7 +16,6 @@ root = Tk()
 frame = Frame(root)
 frame.pack()
 root.title("Buscaminas")
-#root.iconbitmap("img/bomba.ico")
 root.iconbitmap("../img/bomba.ico")
 root.resizable(False, False)
 frame.config(width=400, height=400)
@@ -114,19 +113,13 @@ def on_left_click(i, j):
         botones[i][j].config(text=str(tablero[i][j]), bg=COLORES.get(tablero[i][j], "light green"))
         botones[i][j].config(state=tk.DISABLED)
 
-#banderaImgSlot = PhotoImage(file="img/banderaSlot.png")
-#imagenTransparente = PhotoImage(file="img/imagenTransparente.png")
 banderaImgSlot = PhotoImage(file="../img/banderaSlot.png")
 imagenTransparente = PhotoImage(file="../img/imagenTransparente.png")
 
 def on_right_click(i, j):
     if botones[i][j]["state"] == tk.NORMAL:
         if not banderas[i][j]:
-            banderaImgSlot = PhotoImage(file="../img/banderaSlot.png")
-            ancho_img = banderaImgSlot.width()
-            alto_img = banderaImgSlot.height()
-
-            botones[i][j].config(image=banderaImgSlot, width=ancho_img, height=alto_img)
+            botones[i][j].config(image=banderaImgSlot, width=64, height=65,  bg="#f17070")
             banderas[i][j] = True
         else:
             botones[i][j].config(image=imagenTransparente, text="")
@@ -151,7 +144,6 @@ def verificar_victoria():
         messagebox.showinfo("¡Felicidades!", f"¡Has ganado en {tiempo_label.cget('text').split()[1]}!")
         root.destroy()
 
-#imagenBomba = PhotoImage(file="img/bomba3.png")
 imagenBomba = PhotoImage(file="../img/bomba3.png")
 
 def game_over():
