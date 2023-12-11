@@ -121,7 +121,11 @@ imagenTransparente = PhotoImage(file="../img/imagenTransparente.png")
 def on_right_click(i, j):
     if botones[i][j]["state"] == tk.NORMAL:
         if not banderas[i][j]:
-            botones[i][j].config(image=banderaImgSlot, width=64, height=65)
+            banderaImgSlot = PhotoImage(file="../img/banderaSlot.png")
+            ancho_img = banderaImgSlot.width()
+            alto_img = banderaImgSlot.height()
+
+            botones[i][j].config(image=banderaImgSlot, width=ancho_img, height=alto_img)
             banderas[i][j] = True
         else:
             botones[i][j].config(image=imagenTransparente, text="")
