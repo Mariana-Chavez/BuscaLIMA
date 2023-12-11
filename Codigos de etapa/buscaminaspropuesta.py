@@ -106,7 +106,8 @@ def on_left_click(i, j):
     if tablero[i][j] == -1:
         game_over()
     elif tablero[i][j] == 0:
-        reveal_empty_cells(i, j)
+        visited ? set()
+        reveal_empty_cells(i, j, visited)
     else:
         botones[i][j].config(text=str(tablero[i][j]), bg=COLORES.get(tablero[i][j], "light green"))
         botones[i][j].config(state=tk.DISABLED)
@@ -125,13 +126,16 @@ def on_right_click(i, j):
             botones[i][j].config(image=imagenTransparente, text="")
             banderas[i][j] = False
 
-def reveal_empty_cells(i, j):
-    if 0 <= i < ALTO and 0 <= j < ANCHO and botones[i][j]["state"] == tk.NORMAL:
+def reveal_empty_cells(i, j, visited):
+    if (0 <= i < ALTO and 0 <= j < ANCHO and
+            botones[i][j]["state"] == tk.NORMAL and
+            (i, j) not in visited):
+        visited.add((i, j))
         if tablero[i][j] == 0:
             botones[i][j].config(state=tk.DISABLED, text="", bg=COLORES[0])
             for x in range(-1, 2):
                 for y in range(-1, 2):
-                    reveal_empty_cells(i + y, j + x)
+                    reveal_empty_cells(i + y, j + x, visited)
         elif 0 < tablero[i][j] < 9:
             botones[i][j].config(state=tk.DISABLED, text=str(tablero[i][j]), bg=COLORES[tablero[i][j]])
 
