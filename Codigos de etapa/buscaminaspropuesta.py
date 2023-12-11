@@ -100,8 +100,9 @@ def on_left_click(i, j):
         game_over()
     elif tablero[i][j] == 0:
         reveal_empty_cells(i, j)
+	botones[i][j].config(bg="light blue")
     else:
-        botones[i][j].config(text=str(tablero[i][j]))
+        botones[i][j].config(text=str(tablero[i][j]), bg="light green")
 
 #banderaImgSlot = PhotoImage(file="img/banderaSlot.png")
 #imagenTransparente = PhotoImage(file="img/imagenTransparente.png")
@@ -120,12 +121,12 @@ def on_right_click(i, j):
 def reveal_empty_cells(i, j):
     if 0 <= i < ALTO and 0 <= j < ANCHO and botones[i][j]["state"] == tk.NORMAL:
         if tablero[i][j] == 0:
-            botones[i][j].config(state=tk.DISABLED, text="")
+            botones[i][j].config(state=tk.DISABLED, text="", bg="light blue")
             for x in range(-1, 2):
                 for y in range(-1, 2):
                     reveal_empty_cells(i + y, j + x)
         elif 0 < tablero[i][j] < 9:
-            botones[i][j].config(state=tk.DISABLED, text=str(tablero[i][j]))
+            botones[i][j].config(state=tk.DISABLED, text=str(tablero[i][j]), bg="light green")
 
 def verificar_victoria():
     celdas_sin_bomba = [botones[i][j]["state"] == tk.DISABLED for i in range(ALTO) for j in range(ANCHO)]
@@ -152,6 +153,11 @@ def game_over():
 def reiniciar_juego():
     limpiar_tablero()
     crear_tablero()
+
+if __name__ == "__main__":
+    crear_menu()
+    crear_tablero()
+    root.mainloop()
 
 if __name__ == "__main__":
     crear_menu()
