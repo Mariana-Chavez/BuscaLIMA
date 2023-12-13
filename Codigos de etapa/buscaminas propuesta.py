@@ -13,7 +13,7 @@ root = Tk()
 frame = Frame(root)
 frame.pack()
 root.title("Buscaminas")
-root.iconbitmap("../img/bomba.ico")
+root.iconbitmap("BuscaLIMA/img/bomba.ico")
 root.resizable(False, False)
 frame.config(width=400, height=400)
 
@@ -133,8 +133,8 @@ def on_left_click(i, j):
         buttons[i][j].config(text=str(board[i][j]))
         buttons[i][j].config(state=tk.NORMAL)
 
-banderaImgSlot = PhotoImage(file="../img/banderaSlot.png") 
-imagenTransparente = PhotoImage(file="../img/imagenTransparente.png")
+banderaImgSlot = PhotoImage(file="BuscaLIMA/img/banderaSlot.png") 
+imagenTransparente = PhotoImage(file="BuscaLIMA/img/imagenTransparente.png")
 
 
 def on_right_click(i, j):
@@ -182,7 +182,7 @@ def check_win():
 
 #-------------------------------------Game Over-------------------------------------
 
-imagenBomba= PhotoImage(file="../img/bomba3.png") #Definimos la imagen de la bomba que deseemos que se muestra
+imagenBomba= PhotoImage(file="BuscaLIMA/img/bomba3.png") #Definimos la imagen de la bomba que deseemos que se muestra
 
 def game_over():
     """ Function that indicates when you lose """
