@@ -3,17 +3,28 @@ from tkinter import *
 from tkinter import messagebox
 import random
 import time
+import pkg_resources
+from tkinter import PhotoImage
+
 
 #-----------------Dashboard Generator----------------
 
 #Default level (easy)
 WIDTH, HEIGHT, BOMB_COUNT = 6, 6, 6
 
+# Rutas a las imágenes usando pkg_resources
+ruta_bandera = pkg_resources.resource_filename('BuscaLIMA', 'img/banderaSlot.png')
+ruta_transparente = pkg_resources.resource_filename('BuscaLIMA', 'img/imagenTransparente.png')
+ruta_bomba3 = pkg_resources.resource_filename('BuscaLIMA', 'img/bomba3.png')
+ruta_bomba = pkg_resources.resource_filename('BuscaLIMA', 'img/bomba.ico')
+
+
+
 root = Tk()
 frame = Frame(root)
 frame.pack()
 root.title("Buscaminas")
-root.iconbitmap("BuscaLIMA/img/bomba.ico")
+root.iconbitmap("ruta_bomba")
 root.resizable(False, False)
 frame.config(width=400, height=400)
 
@@ -132,9 +143,9 @@ def on_left_click(i, j):
     else:
         buttons[i][j].config(text=str(board[i][j]))
         buttons[i][j].config(state=tk.NORMAL)
-
-banderaImgSlot = PhotoImage(file="BuscaLIMA/img/banderaSlot.png") 
-imagenTransparente = PhotoImage(file="BuscaLIMA/img/imagenTransparente.png")
+        
+banderaImgSlot = PhotoImage(file=ruta_bandera)
+imagenTransparente = PhotoImage(file=ruta_transparente)
 
 
 def on_right_click(i, j):
@@ -182,7 +193,7 @@ def check_win():
 
 #-------------------------------------Game Over-------------------------------------
 
-imagenBomba= PhotoImage(file="BuscaLIMA/img/bomba3.png") #Definimos la imagen de la bomba que deseemos que se muestra
+imagenBomba = PhotoImage(file=ruta_bomba3)
 
 def game_over():
     """ Function that indicates when you lose """
