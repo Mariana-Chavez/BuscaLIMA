@@ -64,7 +64,7 @@ def set_difficulty(width, height, bomb_count):
 #---------------------Game board-----------------------
 
 def clear_board():
-	"""This function is responsible for cleaning the board and resetting some variables"""
+    """This function is responsible for cleaning the board and resetting some variables"""
     global buttons, time_label
     for i in range(len(buttons)):
         for j in range(len(buttons[i])):
@@ -78,7 +78,7 @@ def clear_board():
 
 
 def create_board():
-	"""This function is responsible for initializing and displaying the game board in the graphical interface"""
+    """This function is responsible for initializing and displaying the game board in the graphical interface"""
     global board, buttons, flags, time_label, time_active
     board = [[0] *  WIDTH for _ in range(HEIGHT)]
     flags = [[False] * WIDTH for _ in range(HEIGHT)]
@@ -101,7 +101,7 @@ def create_board():
 #----------------------------Mines------------------------
 
 def place_bombs():
-	"""This function places the bombs on the board"""
+    """This function places the bombs on the board"""
     bombs_placed = 0
     while bombs_placed < BOMB_COUNT:
         x, y = random.randint(0, WIDTH - 1), random.randint(0, HEIGHT - 1)
@@ -110,7 +110,7 @@ def place_bombs():
             bombs_placed += 1
 
 def calculate_numbers():
-	"""this function counts how many mines there are in adjacent cells."""
+    """this function counts how many mines there are in adjacent cells."""
     for i in range(HEIGHT):
         for j in range(WIDTH):
             if board[i][j] == -1:
@@ -123,7 +123,7 @@ def calculate_numbers():
 #--------------------------Game controls--------------------
 
 def on_left_click(i, j):
-	"""This function creates one of the game controls, such that we create a function for left click and calls the game_over() function if the clicked cell contains a mine"""
+    """This function creates one of the game controls, such that we create a function for left click and calls the game_over() function if the clicked cell contains a mine"""
     if board[i][j] == -1:
         game_over()
     elif board[i][j] == 0:
@@ -138,7 +138,7 @@ imagenTransparente = PhotoImage(file../img/imagenTransparente.png")
 
 
 def on_right_click(i, j):
-	"""This function creates one of the game controls, such that places a flag in a cell or removes it"""
+    """This function creates one of the game controls, such that places a flag in a cell or removes it"""
     if buttons[i][j]["state"] == tk.NORMAL:
         if not flags[i][j]:
             buttons[i][j].config(image=banderaImgSlot, width=64, height=65)
