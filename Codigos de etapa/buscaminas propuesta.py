@@ -185,7 +185,7 @@ def check_win():
 imagenBomba= PhotoImage(file="../img/bomba3.png") #Definimos la imagen de la bomba que deseemos que se muestra
 
 def game_over():
-    """ Function that indicates when you lose """"
+    """ Function that indicates when you lose """
     global time_active
     time_active = False
 
