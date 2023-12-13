@@ -13,11 +13,10 @@ from tkinter import PhotoImage
 WIDTH, HEIGHT, BOMB_COUNT = 6, 6, 6
 
 # Rutas a las imágenes usando pkg_resources
-ruta_bandera = pkg_resources.resource_filename('BuscaLIMA', 'img/banderaSlot.png')
-ruta_transparente = pkg_resources.resource_filename('BuscaLIMA', 'img/imagenTransparente.png')
-ruta_bomba3 = pkg_resources.resource_filename('BuscaLIMA', 'img/bomba3.png')
-ruta_bomba = pkg_resources.resource_filename('BuscaLIMA', 'img/bomba.ico')
-
+ruta_bandera = 'BuscaLIMA/img/banderaSlot.png'
+ruta_transparente = 'BuscaLIMA/img/imagenTransparente.png'
+ruta_bomba3 = 'BuscaLIMA/img/bomba3.png'
+ruta_bomba = 'BuscaLIMA/img/bomba.ico'
 
 root = Tk()
 frame = Frame(root)
