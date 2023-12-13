@@ -55,7 +55,7 @@ def create_menu():
     difficulty_menu.add_command(label="Dificil", command=lambda: set_difficulty(9, 9, 10))
 
 def set_difficulty(width, height, bomb_count):
-	"""This feature changes the difficulty of the game"""
+    """This feature changes the difficulty of the game"""
     global WIDTH, HEIGHT, BOMB_COUNT
     WIDTH, HEIGHT, BOMB_COUNT = width, height, bomb_count
     clear_board()
