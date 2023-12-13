@@ -5,6 +5,7 @@ import random
 import time
 import pkg_resources
 from tkinter import PhotoImage
+import os
 
 
 #-----------------Dashboard Generator----------------
@@ -16,7 +17,7 @@ WIDTH, HEIGHT, BOMB_COUNT = 6, 6, 6
 ruta_bandera = 'BuscaLIMA/img/banderaSlot.png'
 ruta_transparente = 'BuscaLIMA/img/imagenTransparente.png'
 ruta_bomba3 = 'BuscaLIMA/img/bomba3.png'
-ruta_bomba = 'BuscaLIMA/img/bomba.ico'
+ruta_bomba = os.path.abspath('BuscaLIMA/img/bomba.ico')
 
 root = Tk()
 frame = Frame(root)
