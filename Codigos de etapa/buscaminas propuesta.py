@@ -134,7 +134,7 @@ def on_left_click(i, j):
         buttons[i][j].config(state=tk.NORMAL)
 
 banderaImgSlot = PhotoImage(file="../img/banderaSlot.png") 
-imagenTransparente = PhotoImage(file../img/imagenTransparente.png")
+imagenTransparente = PhotoImage(file="../img/imagenTransparente.png")
 
 
 def on_right_click(i, j):
