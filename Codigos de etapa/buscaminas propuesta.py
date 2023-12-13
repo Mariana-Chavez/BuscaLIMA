@@ -19,12 +19,11 @@ ruta_bomba3 = pkg_resources.resource_filename('BuscaLIMA', 'img/bomba3.png')
 ruta_bomba = pkg_resources.resource_filename('BuscaLIMA', 'img/bomba.ico')
 
 
-
 root = Tk()
 frame = Frame(root)
 frame.pack()
 root.title("Buscaminas")
-root.iconbitmap("ruta_bomba")
+root.iconbitmap(ruta_bomba)
 root.resizable(False, False)
 frame.config(width=400, height=400)
 
